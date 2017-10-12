@@ -1,0 +1,34 @@
+﻿<Window x:Class="ShiYing.MathQuestions.FrontEnd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShiYing.MathQuestions.FrontEnd"
+        mc:Ignorable="d"
+        Title="算术题生成器" Height="500" Width="300" MinHeight="300" MinWidth="300">
+    <Grid Margin="5,5,5,5">
+        <TabControl>
+            <TabItem Header="加法">
+                <Grid>
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                            <Button Name="ButtonAdd" Click="ButtonAdd_Click">生成</Button>
+                            <TextBlock Name="CountdownText" HorizontalAlignment="Right">00:00</TextBlock>
+                        </StackPanel>
+                        <TextBox Name="AddTextBox" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="减法">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <Button Name="ButtonSub" Click="ButtonSub_Click">生成</Button>
+                    </StackPanel>
+                    <TextBox Name="SubTextBox" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="乘法"></TabItem>
+            <TabItem Header="除法"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>
