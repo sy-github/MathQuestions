@@ -15,7 +15,7 @@
                             <Button Name="ButtonAdd" Click="ButtonAdd_Click">生成</Button>
                             <TextBlock Name="CountdownText" HorizontalAlignment="Right">00:00</TextBlock>
                         </StackPanel>
-                        <TextBox Name="AddTextBox" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                        <ListBox Name="AddList" FontSize="24" />
                     </DockPanel>
                 </Grid>
             </TabItem>
@@ -24,7 +24,7 @@
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                         <Button Name="ButtonSub" Click="ButtonSub_Click">生成</Button>
                     </StackPanel>
-                    <TextBox Name="SubTextBox" AcceptsReturn="True" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+                    <ListBox Name="SubList" FontSize="24" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="乘法"></TabItem>

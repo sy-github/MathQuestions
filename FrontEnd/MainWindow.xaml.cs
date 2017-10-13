@@ -28,32 +28,26 @@ namespace ShiYing.MathQuestions.FrontEnd
         {
         }, App.Current.Dispatcher);
 
-        public MainWindow() => InitializeComponent();
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            AddList.ItemsSource = _app.Generator.AddQuestions;
+            SubList.ItemsSource = _app.Generator.SubtractQuestions;
+        }
 
         #region Event Handlers
 
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            SetTextBoxContent(AddTextBox, _app.Generator.GetAdditionQuestions());
-
-            _timerAdd.Tag = TimeSpan.FromMinutes(2);
-            CountdownText.Text = ((TimeSpan)_timerAdd.Tag).ToString(@"mm\:ss");
-            _timerAdd.Start();
+            _app.Generator.GenerateAdditionQuestions();
         }
 
         private void ButtonSub_Click(object sender, RoutedEventArgs e)
         {
-            SetTextBoxContent(SubTextBox, _app.Generator.GetSubtractionQuestions());
+            _app.Generator.GenerateSubtractionQuestions();
         }
 
         #endregion
-
-        private void SetTextBoxContent(TextBox t, IEnumerable<string> lines)
-        {
-            t.Text = string.Empty;
-            foreach (var line in lines)
-                t.Text += line + '\n';
-            t.ScrollToHome();
-        }
     }
 }

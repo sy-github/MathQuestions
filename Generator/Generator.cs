@@ -1,57 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace ShiYing.MathQuestions
 {
     public class GeneratorConfig
     {
-        public bool Add_WithinTen = false;
+        public int QuestionCount { get; set; } = 20;
     }
 
     public class Generator
     {
         private Random _rand = new Random();
 
-        public GeneratorConfig Config { get; set; }
+        public GeneratorConfig Config { get; set; } = new GeneratorConfig();
 
-        public IEnumerable<string> GetAdditionQuestions()
+        public int AdditionMax { get; set; } = 100;
+
+        public ObservableCollection<Question> AddQuestions { get; set; } = new ObservableCollection<Question>();
+
+        public void GenerateAdditionQuestions()
         {
-            int maxInt = 100;
-            const int count = 50;
+            AddQuestions.Clear();
 
-            var list = new List<string>();
-
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Config.QuestionCount; i++)
             {
-                var a = _rand.Next(maxInt);
-                var b = _rand.Next(maxInt);
-
-                list.Add(string.Format("{0} + {1} = ", a, b));
+                var a = _rand.Next(AdditionMax);
+                var b = _rand.Next(a);
+                AddQuestions.Add(new Question(a, b, ArithmeticType.Add));
             }
-
-            return list.Distinct();
         }
 
-        public IEnumerable<string> GetSubtractionQuestions()
+        public int SubtractionMax { get; set; } = 100;
+
+        public ObservableCollection<Question> SubtractQuestions { get; set; } = new ObservableCollection<Question>();
+
+        public void GenerateSubtractionQuestions()
         {
-            int maxInt = 100;
-            const int count = 50;
+            SubtractQuestions.Clear();
 
-            var list = new List<string>();
-
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < Config.QuestionCount; i++)
             {
-                var a = _rand.Next(maxInt);
-                var b = _rand.Next(maxInt);
-
-                if (a > b)
-                    list.Add(string.Format("{0} - {1} = ", a, b));
-                else
-                    list.Add(string.Format("{0} - {1} = ", b, a));
+                var a = _rand.Next(SubtractionMax);
+                var b = _rand.Next(a);
+                SubtractQuestions.Add(new Question(a, b, ArithmeticType.Subtract));
             }
-
-            return list.Distinct();
         }
     }
 }
