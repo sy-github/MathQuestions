@@ -23,17 +23,9 @@ namespace ShiYing.MathQuestions.FrontEnd
     {
         private App _app = (App)App.Current;
 
-        private TimeSpan _countdownAdd;
-        private DispatcherTimer _timerAdd = new DispatcherTimer(TimeSpan.FromSeconds(1), DispatcherPriority.Normal, (object o, EventArgs e) =>
-        {
-        }, App.Current.Dispatcher);
-
         public MainWindow()
         {
             InitializeComponent();
-
-            AddList.ItemsSource = _app.Generator.AddQuestions;
-            SubList.ItemsSource = _app.Generator.SubtractQuestions;
         }
 
         #region Event Handlers
@@ -46,6 +38,16 @@ namespace ShiYing.MathQuestions.FrontEnd
         private void ButtonSub_Click(object sender, RoutedEventArgs e)
         {
             _app.Generator.GenerateSubtractionQuestions();
+        }
+
+        private void ButtonMul_Click(object sender, RoutedEventArgs e)
+        {
+            _app.Generator.GenerateMultiplicationQuestions();
+        }
+
+        private void ButtonDiv_Click(object sender, RoutedEventArgs e)
+        {
+            _app.Generator.GenerateDivisionQuestions();
         }
 
         #endregion

@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:ShiYing.MathQuestions.FrontEnd"
         mc:Ignorable="d"
         Title="算术题生成器" Height="500" Width="300" MinHeight="300" MinWidth="300">
+    <Window.Resources>
+        <Style TargetType="ListBox">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </Window.Resources>
+    
     <Grid Margin="5,5,5,5">
         <TabControl>
             <TabItem Header="加法">
@@ -13,9 +19,8 @@
                     <DockPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                             <Button Name="ButtonAdd" Click="ButtonAdd_Click">生成</Button>
-                            <TextBlock Name="CountdownText" HorizontalAlignment="Right">00:00</TextBlock>
                         </StackPanel>
-                        <ListBox Name="AddList" FontSize="24" />
+                        <ListBox Name="AddList" ItemsSource="{Binding Path=Generator.AdditionQuestions, Source={x:Static local:App.Current}}" />
                     </DockPanel>
                 </Grid>
             </TabItem>
@@ -24,11 +29,25 @@
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                         <Button Name="ButtonSub" Click="ButtonSub_Click">生成</Button>
                     </StackPanel>
-                    <ListBox Name="SubList" FontSize="24" />
+                    <ListBox Name="SubList" ItemsSource="{Binding Path=Generator.SubtractQuestions, Source={x:Static local:App.Current}}" />
                 </DockPanel>
             </TabItem>
-            <TabItem Header="乘法"></TabItem>
-            <TabItem Header="除法"></TabItem>
+            <TabItem Header="乘法">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <Button Name="ButtonMul" Click="ButtonMul_Click">生成</Button>
+                    </StackPanel>
+                    <ListBox Name="MulList" ItemsSource="{Binding Path=Generator.MultiplicationQuestions, Source={x:Static local:App.Current}}" />
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="除法">
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <Button Name="ButtonDiv" Click="ButtonDiv_Click">生成</Button>
+                    </StackPanel>
+                    <ListBox Name="DivList" ItemsSource="{Binding Path=Generator.DivisionQuestions, Source={x:Static local:App.Current}}" />
+                </DockPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

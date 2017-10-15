@@ -13,6 +13,6 @@ namespace ShiYing.MathQuestions.FrontEnd
     /// </summary>
     public partial class App : Application
     {
-        public Generator Generator = new Generator();
+        public Generator Generator { get; } = new Generator();
     }
 }
