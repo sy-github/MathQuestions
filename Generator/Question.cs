@@ -39,7 +39,7 @@ namespace ShiYing.MathQuestions
         public override string ToString()
         {
             var sign = _type == ArithmeticType.Add ? '+' : _type == ArithmeticType.Subtract ? '-' : _type == ArithmeticType.Multiply ? '×' : '÷';
-            return $"{_a} {sign} {_b} =";
+            return $"{_a} {sign} {_b} = ";
         }
     }
 }

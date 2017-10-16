@@ -10,15 +10,16 @@ namespace ShiYing.MathQuestions
         public int QuestionCount { get; set; } = 20;
     }
 
-    public class Generator
+    public partial class Generator
     {
+        // Random generator shared in the entire Generator class
         private Random _rand = new Random();
 
         public GeneratorConfig Config { get; set; } = new GeneratorConfig();
 
         public int AdditionMax { get; set; } = 100;
 
-        public ObservableCollection<Question> AdditionQuestions { get; set; } = new ObservableCollection<Question>();
+        private List<Question> AdditionQuestions { get; set; } = new List<Question>();
 
         public void GenerateAdditionQuestions()
         {
@@ -30,6 +31,8 @@ namespace ShiYing.MathQuestions
                 var b = _rand.Next(a);
                 AdditionQuestions.Add(new Question(a, b, ArithmeticType.Add));
             }
+
+            OnQuestionsGenerated(new QuestionsGeneratedEventArgs { Type = ArithmeticType.Add, QuestionList = AdditionQuestions });
         }
 
         public int SubtractionMax { get; set; } = 100;
