@@ -21,7 +21,28 @@ namespace ShiYing.MathQuestions
 
         private List<Question> AdditionQuestions { get; set; } = new List<Question>();
 
-        public void GenerateAdditionQuestions()
+        public void GenerateQuestions(ArithmeticType t)
+        {
+            switch (t)
+            {
+                case ArithmeticType.Add:
+                    GenerateAdditionQuestions();
+                    break;
+                case ArithmeticType.Subtract:
+                    GenerateSubtractionQuestions();
+                    break;
+                case ArithmeticType.Multiply:
+                    GenerateMultiplicationQuestions();
+                    break;
+                case ArithmeticType.Divide:
+                    GenerateDivisionQuestions();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void GenerateAdditionQuestions()
         {
             AdditionQuestions.Clear();
 
@@ -37,9 +58,9 @@ namespace ShiYing.MathQuestions
 
         public int SubtractionMax { get; set; } = 100;
 
-        public ObservableCollection<Question> SubtractQuestions { get; set; } = new ObservableCollection<Question>();
+        public List<Question> SubtractQuestions { get; set; } = new List<Question>();
 
-        public void GenerateSubtractionQuestions()
+        private void GenerateSubtractionQuestions()
         {
             SubtractQuestions.Clear();
 
@@ -49,13 +70,15 @@ namespace ShiYing.MathQuestions
                 var b = _rand.Next(a);
                 SubtractQuestions.Add(new Question(a, b, ArithmeticType.Subtract));
             }
+
+            OnQuestionsGenerated(new QuestionsGeneratedEventArgs { Type = ArithmeticType.Subtract, QuestionList = SubtractQuestions });
         }
 
         public int MultiplicationMaxA { get; set; } = 20;
 
-        public ObservableCollection<Question> MultiplicationQuestions { get; set; } = new ObservableCollection<Question>();
+        public List<Question> MultiplicationQuestions { get; set; } = new List<Question>();
 
-        public void GenerateMultiplicationQuestions()
+        private void GenerateMultiplicationQuestions()
         {
             MultiplicationQuestions.Clear();
 
@@ -65,13 +88,15 @@ namespace ShiYing.MathQuestions
                 var b = _rand.Next(Math.Min(10, a));
                 MultiplicationQuestions.Add(new Question(a, b, ArithmeticType.Multiply));
             }
+
+            OnQuestionsGenerated(new QuestionsGeneratedEventArgs { Type = ArithmeticType.Multiply, QuestionList = MultiplicationQuestions });
         }
 
         public int DivisionMaxA { get; set; } = 100;
 
-        public ObservableCollection<Question> DivisionQuestions { get; set; } = new ObservableCollection<Question>();
+        public List<Question> DivisionQuestions { get; set; } = new List<Question>();
 
-        public void GenerateDivisionQuestions()
+        private void GenerateDivisionQuestions()
         {
             DivisionQuestions.Clear();
 
@@ -88,6 +113,8 @@ namespace ShiYing.MathQuestions
 
                 DivisionQuestions.Add(new Question(a, b, ArithmeticType.Divide));
             }
+
+            OnQuestionsGenerated(new QuestionsGeneratedEventArgs { Type = ArithmeticType.Divide, QuestionList = DivisionQuestions });
         }
     }
 }

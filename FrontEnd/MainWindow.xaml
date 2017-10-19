@@ -7,50 +7,54 @@
         xmlns:core="clr-namespace:ShiYing.MathQuestions;assembly=Generator"
         mc:Ignorable="d"
         Title="算术题生成器" Height="500" Width="300" MinHeight="300" MinWidth="300">
+    <Window.DataContext>
+        <local:QuestionListViewModel />
+    </Window.DataContext>
+
     <Window.Resources>
-        <Style TargetType="ListBox">
-            <Setter Property="FontSize" Value="24" />
-        </Style>
-        <Style TargetType="Button" x:Key="MajorButton">
-            <Setter Property="Width" Value="50" />
-            <Setter Property="Height" Value="30" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Template/Templates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
-    
+
+    <!-- Define and instantiate the singleton view model -->
     <Grid Margin="5,5,5,5">
         <TabControl>
             <TabItem Header="加法">
                 <Grid>
                     <DockPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                            <Button Name="ButtonAdd" Style="{StaticResource MajorButton}" Click="ButtonAdd_Click">生成</Button>
+                            <Button Name="ButtonAdd" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Add}">生成</Button>
+                            <Button Name="ButtonShow" Style="{StaticResource MajorButton}" Command="{Binding ShowCorrectAnswerCommand}">看答案</Button>
                         </StackPanel>
-                        <ListBox Name="AddList" ItemsSource="{Binding Path=QuestionLists[(core:ArithmeticType)Add], Source={x:Static local:App.Current}}" />
+                        <ListBox Name="AddList" ItemsSource="{Binding Path=QuestionLists[Add]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                     </DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="减法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonSub" Style="{StaticResource MajorButton}" Click="ButtonSub_Click">生成</Button>
+                        <Button Name="ButtonSub" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Subtract}">生成</Button>
                     </StackPanel>
-                    <ListBox Name="SubList" ItemsSource="{Binding Path=Generator.SubtractQuestions, Source={x:Static local:App.Current}}" />
+                    <ListBox Name="SubList" ItemsSource="{Binding Path=QuestionLists[Subtract]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="乘法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonMul" Style="{StaticResource MajorButton}" Click="ButtonMul_Click">生成</Button>
+                        <Button Name="ButtonMul" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Multiply}">生成</Button>
                     </StackPanel>
-                    <ListBox Name="MulList" ItemsSource="{Binding Path=Generator.MultiplicationQuestions, Source={x:Static local:App.Current}}" />
+                    <ListBox Name="MulList" ItemsSource="{Binding Path=QuestionLists[Multiply]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="除法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonDiv" Style="{StaticResource MajorButton}" Click="ButtonDiv_Click">生成</Button>
+                        <Button Name="ButtonDiv" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Divide}">生成</Button>
                     </StackPanel>
-                    <ListBox Name="DivList" ItemsSource="{Binding Path=Generator.DivisionQuestions, Source={x:Static local:App.Current}}" />
+                    <ListBox Name="DivList" ItemsSource="{Binding Path=QuestionLists[Divide]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
         </TabControl>
