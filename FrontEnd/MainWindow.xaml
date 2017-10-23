@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="算术题生成器" Height="500" Width="300" MinHeight="300" MinWidth="300">
     <Window.DataContext>
-        <local:QuestionListViewModel />
+        <local:MainWindowViewModel />
     </Window.DataContext>
 
     <Window.Resources>
@@ -26,35 +26,38 @@
                 <Grid>
                     <DockPanel>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                            <Button Name="ButtonAdd" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Add}">生成</Button>
-                            <Button Name="ButtonShow" Style="{StaticResource MajorButton}" Command="{Binding ShowCorrectAnswerCommand}">看答案</Button>
+                            <Button Name="ButtonAdd" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[GenerateQuestions]}" CommandParameter="{x:Static local:QuestionEnumType.Add}">生成</Button>
+                            <Button Name="ButtonAddShowAnswer" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[ShowAnswer]}" CommandParameter="{x:Static local:QuestionEnumType.Add}">看答案</Button>
                         </StackPanel>
-                        <ListBox Name="AddList" ItemsSource="{Binding Path=QuestionLists[Add]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
+                        <ListBox Name="AddList" DataContext="{Binding Path=[Add]}" ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                     </DockPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="减法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonSub" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Subtract}">生成</Button>
+                        <Button Name="ButtonSub" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[GenerateQuestions]}" CommandParameter="{x:Static local:QuestionEnumType.Subtract}">生成</Button>
+                        <Button Name="ButtonSubShowAnswer" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[ShowAnswer]}" CommandParameter="{x:Static local:QuestionEnumType.Subtract}">看答案</Button>
                     </StackPanel>
-                    <ListBox Name="SubList" ItemsSource="{Binding Path=QuestionLists[Subtract]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
+                    <ListBox Name="SubList" DataContext="{Binding Path=[Subtract]}" ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="乘法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonMul" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Multiply}">生成</Button>
+                        <Button Name="ButtonMul" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[GenerateQuestions]}" CommandParameter="{x:Static local:QuestionEnumType.Multiply}">生成</Button>
+                        <Button Name="ButtonMulShowAnswer" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[ShowAnswer]}" CommandParameter="{x:Static local:QuestionEnumType.Multiply}">看答案</Button>
                     </StackPanel>
-                    <ListBox Name="MulList" ItemsSource="{Binding Path=QuestionLists[Multiply]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
+                    <ListBox Name="MulList" DataContext="{Binding Path=[Multiply]}" ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
             <TabItem Header="除法">
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                        <Button Name="ButtonDiv" Style="{StaticResource MajorButton}" Command="{Binding GenerateQuestionsCommand}" CommandParameter="{x:Static local:QuestionListViewModel+QuestionType.Divide}">生成</Button>
+                        <Button Name="ButtonDiv" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[GenerateQuestions]}" CommandParameter="{x:Static local:QuestionEnumType.Divide}">生成</Button>
+                        <Button Name="ButtonDivShowAnswer" Style="{StaticResource MajorButton}" Command="{Binding CommandManager[ShowAnswer]}" CommandParameter="{x:Static local:QuestionEnumType.Divide}">看答案</Button>
                     </StackPanel>
-                    <ListBox Name="DivList" ItemsSource="{Binding Path=QuestionLists[Divide]}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
+                    <ListBox Name="DivList" DataContext="{Binding Path=[Divide]}" ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
                 </DockPanel>
             </TabItem>
         </TabControl>

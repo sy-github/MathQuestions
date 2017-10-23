@@ -16,11 +16,5 @@ namespace ShiYing.MathQuestions.FrontEnd
 
 
         #endregion
-
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var vm = DataContext as QuestionListViewModel;
-            vm.GenerateQuestions(QuestionListViewModel.QuestionType.Add);
-        }
     }
 }

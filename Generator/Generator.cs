@@ -15,6 +15,11 @@ namespace ShiYing.MathQuestions
         // Random generator shared in the entire Generator class
         private Random _rand = new Random();
 
+        private Generator() { }
+
+        private static Generator _generator;
+        public static Generator Instance => _generator ?? (_generator = new Generator());
+
         public GeneratorConfig Config { get; set; } = new GeneratorConfig();
 
         public int AdditionMax { get; set; } = 100;

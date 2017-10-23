@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetStandardUtility">
+      <HintPath>..\..\DotNetStandardUtility\DotNetStandardUtility\bin\Debug\netstandard2.0\DotNetStandardUtility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,9 +56,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\QuestionListViewModelBase.cs" />
     <Compile Include="ViewModel\QuestionItemView.cs" />
-    <Compile Include="ViewModel\QuestionListViewModel.cs" />
-    <Compile Include="ViewModel\QuestionListViewModel_Command.cs" />
+    <Compile Include="ViewModel\QuestionListViewModel2.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
