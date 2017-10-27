@@ -38,14 +38,14 @@ namespace ShiYing.MathQuestions.FrontEnd
             this[t].GenerateQuestions();
         }
 
-        private List<QuestionListViewModelBase> QuestionLists { get; } = new List<QuestionListViewModelBase>()
+        public List<QuestionListViewModelBase> QuestionLists { get; } = new List<QuestionListViewModelBase>()
         {
-            new QuestionListViewModel2(QuestionEnumType.Add),
-            new QuestionListViewModel2(QuestionEnumType.Subtract),
-            new QuestionListViewModel2(QuestionEnumType.Multiply),
-            new QuestionListViewModel2(QuestionEnumType.Divide)
+            new QuestionListViewModel(QuestionEnumType.Add),
+            new QuestionListViewModel(QuestionEnumType.Subtract),
+            new QuestionListViewModel(QuestionEnumType.Multiply),
+            new QuestionListViewModel(QuestionEnumType.Divide)
         };
 
-        public QuestionListViewModelBase this[QuestionEnumType t] => QuestionLists.Find((q) => q.QuestionType == t);
+        private QuestionListViewModelBase this[QuestionEnumType t] => QuestionLists.Find((q) => q.QuestionType == t);
     }
 }

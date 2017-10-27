@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShiYing.MathQuestions.FrontEnd
 {
-    public class QuestionListViewModel2 : QuestionListViewModelBase
+    public class QuestionListViewModel : QuestionListViewModelBase
     {
-        public QuestionListViewModel2(QuestionEnumType t) : base(t) {}
-
-
-
+        public QuestionListViewModel(QuestionEnumType t) : base(t) {}
     }
 }
