@@ -34,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetStandardUtility">
-      <HintPath>..\..\DotNetStandardUtility\DotNetStandardUtility\bin\Debug\netstandard2.0\DotNetStandardUtility.dll</HintPath>
+    <Reference Include="DotNetStandardUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\DotNetStandardUtility.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
