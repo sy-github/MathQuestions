@@ -79,7 +79,7 @@ namespace ShiYing.MathQuestions
             OnQuestionsGenerated(new QuestionsGeneratedEventArgs { Type = ArithmeticType.Subtract, QuestionList = SubtractQuestions });
         }
 
-        public int MultiplicationMaxA { get; set; } = 20;
+        public int MultiplicationMaxA { get; set; } = 100;
 
         public List<Question> MultiplicationQuestions { get; set; } = new List<Question>();
 
@@ -90,7 +90,7 @@ namespace ShiYing.MathQuestions
             for (int i = 0; i < Config.QuestionCount; i++)
             {
                 var a = _rand.Next(MultiplicationMaxA);
-                var b = _rand.Next(Math.Min(10, a));
+                var b = _rand.Next(2, Math.Min(10, a));
                 MultiplicationQuestions.Add(new Question(a, b, ArithmeticType.Multiply));
             }
 

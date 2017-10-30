@@ -18,18 +18,21 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-
     
-    <StackPanel Margin="5,5,5,5">
+    <Grid>
         <TabControl ItemsSource="{Binding QuestionLists}">
             <TabControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding QuestionType}" />
+                    <TextBlock Text="{Binding QuestionType}" FontSize="14" />
                 </DataTemplate>
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
                         <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource MajorButton}"
                                     Command="{Binding CommandManager[GenerateQuestions], Source={x:Reference Name=MainViewModel}}"
@@ -42,10 +45,10 @@
                                 看答案
                             </Button>
                         </StackPanel>
-                        <ListBox ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
-                    </StackPanel>
+                        <ListBox Grid.Row="1" ItemsSource="{Binding QuestionList}" ItemTemplate="{StaticResource QuestionItemTemplate}" />
+                    </Grid>
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
-    </StackPanel>
+    </Grid>
 </Window>
