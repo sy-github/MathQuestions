@@ -36,6 +36,7 @@ namespace ShiYing.MathQuestions.FrontEnd
         private void GenerateQuestions(QuestionEnumType t)
         {
             this[t].GenerateQuestions();
+            this[t].IsCorrectAnswerVisible = false;
         }
 
         public List<QuestionListViewModelBase> QuestionLists { get; } = new List<QuestionListViewModelBase>()
